@@ -10,9 +10,9 @@ import java.util.concurrent.ConcurrentMap;
 public class UserRepository {
     private final ConcurrentMap<String, String> personalData = new ConcurrentHashMap<String, String>();
 
-    public List<Authorities> getUserAuthorities(String user, String password) {
-        if (personalData.containsKey(user)) {
-            return new ArrayList<Authorities>(List.of(Authorities.READ, Authorities.WRITE, Authorities.DELETE));
+    public List<Authorities> getUserAuthorities(User user) {
+        if (personalData.containsKey(user.getUser())) {
+            return new ArrayList<>(List.of(Authorities.READ, Authorities.WRITE, Authorities.DELETE));
         } else {
             return List.of();
         }
